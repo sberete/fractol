@@ -6,7 +6,7 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:05:20 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/08 21:54:29 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/09 21:55:24 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,29 @@
 
 # define BLANC 0x00FFFFFF
 
+# define WIDTH 800
+# define HEIGHT 800
+
 typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
+	char	*name;
 }			t_data;
 
-bool	check(int argc, char **argv);
+typedef struct s_complexe
+{
+	float	x;
+	float	y;
+}			t_complexe;
+
+bool		check(int argc, char **argv);
+int			key_func(int keycode, t_data *ap);
+int			mous_func(int keycode, t_data *ap);
+int			hook_func(t_data *ap);
+void		malloc_error(void);
+void		param_available(void);
+void		fractol_init(t_data *fractol);
 
 #endif

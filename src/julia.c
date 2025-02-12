@@ -6,8 +6,13 @@
 /*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:14:23 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/08 19:41:46 by sberete          ###   ########.fr       */
+/*   Updated: 2025/02/09 18:35:52 by sberete          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+z n + 1 = z n 2 + c;
+c = (nombre complexe) la valeur reel + la valeur imaginaire
+*/
