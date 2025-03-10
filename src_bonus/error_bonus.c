@@ -1,13 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sberete <sberete@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 15:13:03 by sberete           #+#    #+#             */
-/*   Updated: 2025/02/09 15:13:06 by sberete          ###   ########.fr       */
+/*   Created: 2025/02/09 20:47:35 by sberete           #+#    #+#             */
+/*   Updated: 2025/03/09 17:02:27 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
+
+void	param_available(void)
+{
+	ft_printf("Available parameters :\n");
+	ft_printf("julia <1> || <2> || <3> || <4>\n");
+	ft_printf("mandelbrot\nburningship\n");
+	exit(0);
+}
