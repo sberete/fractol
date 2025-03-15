@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 18:32:45 by sxriimu           #+#    #+#             */
-/*   Updated: 2025/03/10 00:20:55 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/03/15 13:34:56 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ typedef struct s_data
 	void	*win;
 	t_img	img;
 	double	zoom;
-	double	offset_x;
-	double	offset_y;
 	int		max_iter;
 	int		color_scheme;
 }			t_data;

@@ -6,11 +6,19 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:23:48 by sxriimu           #+#    #+#             */
-/*   Updated: 2025/03/09 16:17:12 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/03/15 12:42:14 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
+
+void	mlx_hookes(t_data *fractol)
+{
+	mlx_key_hook(fractol->win, key_func, fractol);
+	mlx_hook(fractol->win, DestroyNotify, StructureNotifyMask, hook_func,
+		fractol);
+	mlx_mouse_hook(fractol->win, mouse_func, fractol);
+}
 
 void	fractol_init(t_data *fractol)
 {
@@ -22,4 +30,5 @@ void	fractol_init(t_data *fractol)
 	fractol->name = fractol->argv[1];
 	fractol->max_iter = 42;
 	fractol->zoom = 1.0;
+	mlx_hookes(fractol);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   draw_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:14:23 by sberete           #+#    #+#             */
-/*   Updated: 2025/03/07 18:28:12 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/03/15 13:34:07 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ static void	draw_pixel(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
-static void	handle_pixel(int x, int y, t_data *fractol)
+static int	compute_color_at_pixel(int x, int y, t_data *fractol)
 {
 	t_complexe	z;
 	t_complexe	c;
 	int			i;
-	int			color;
 
 	z.x = ((x - WIDTH / 2.0) * 4.0 / WIDTH) * fractol->zoom;
 	z.y = ((y - HEIGHT / 2.0) * 4.0 / HEIGHT) * fractol->zoom;
@@ -67,20 +66,17 @@ static void	handle_pixel(int x, int y, t_data *fractol)
 	{
 		z = complex_add(complex_square(z), c);
 		if (complex_mod(z) > 2.0)
-		{
-			color = get_color(fractol, i);
-			draw_pixel(x, y, &fractol->img, color);
-			return ;
-		}
+			return (get_color(fractol, i));
 		i++;
 	}
-	draw_pixel(x, y, &fractol->img, BLACK);
+	return (BLACK);
 }
 
 void	render(t_data *fractol)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -88,7 +84,8 @@ void	render(t_data *fractol)
 		x = 0;
 		while (x < WIDTH)
 		{
-			handle_pixel(x, y, fractol);
+			color = compute_color_at_pixel(x, y, fractol);
+			draw_pixel(x, y, &fractol->img, color);
 			x++;
 		}
 		y++;

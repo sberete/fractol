@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:23:48 by sxriimu           #+#    #+#             */
-/*   Updated: 2025/03/07 19:15:10 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/03/15 13:36:04 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,8 @@ void	fractol_init(t_data *fractol)
 	fractol->name = fractol->argv[1];
 	fractol->max_iter = 42;
 	fractol->zoom = 1.0;
+	mlx_key_hook(fractol->win, key_func, fractol);
+	mlx_hook(fractol->win, DestroyNotify, StructureNotifyMask, hook_func,
+		fractol);
+	mlx_mouse_hook(fractol->win, mouse_func, fractol);
 }
