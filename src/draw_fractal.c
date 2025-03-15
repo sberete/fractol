@@ -6,7 +6,7 @@
 /*   By: sxriimu <sxriimu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:14:23 by sberete           #+#    #+#             */
-/*   Updated: 2025/03/15 13:34:07 by sxriimu          ###   ########.fr       */
+/*   Updated: 2025/03/15 13:50:23 by sxriimu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ static int	get_color(t_data *fractol, int i)
 
 	ratio = (float)i / fractol->max_iter;
 	if (fractol->color_scheme == 0)
-		color = (i * 255 / fractol->max_iter) << 16;
+		color = (((int)(ratio * 128)) << 16) | (((int)(ratio
+						* 0)) << 8) | ((int)(ratio * 255));
 	else if (fractol->color_scheme == 1)
 		color = (((int)(ratio * 255)) << 8) | ((int)((1 - ratio) * 255));
 	else if (fractol->color_scheme == 2)
-		color = (((int)(ratio * 255)) << 16) | (((int)(ratio
-						* 105)) << 8) | ((int)(ratio * 180));
-	else
-		color = (i * 255 / fractol->max_iter) << 16;
+		color = WHITE;
 	return (color);
 }
 
